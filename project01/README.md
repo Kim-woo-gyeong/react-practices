@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-practices
 
-## Available Scripts
+```jsx
+class App = function(){   
+    종속되어 있는 객체로 인식   
+}
+```
+***
+```jsx
+class App = () => {   
+    종속 되어 있는 인스턴스로 인식   
+}
+```
+## Props
+: properties를 줄인 표현. 컴포넌트 속성을 설정할 때 사용하는 요소.   
+  props값은 부모 컴포넌트에서 설정(해당 컴포넌트를 불러와 사용하는)
 
-In the project directory, you can run:
+### 비구조화 할당
+```jsx
+const {name, childeren} = this.props;
+```
 
-### `npm start`
+### state
+```jsx
+class {
+    constructor(props) {
+        super(props); // 생성자 함수 호출.
+        this.state = { // 초기값 설정.
+            number: 0
+        };
+    }
+}
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+state = {
+        number : 0,
+        fixedNumber: 0
+    }
+```
+컴포넌트에 state를 설정할 때는 constructor 메서드를 작성하여 실행.   
+state는 객체형식.   
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```jsx
+this.setState((prevState, props) => {
+    return {
+        //업데이트 하고 싶은 내용
+    }
+})
+```
+> prevState : 기존 상태, props: 현재 지니고 있는 props
 
-### `npm test`
+### useState
+```jsx
+const Say = () => {
+    const [message, setMessage] = useState('');
+    const onClickEnter = () => setMessage('안녕하세요!');
+    const onClickLeave = () => setMessage('안녕히 가세요!');
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    const[color, setColor] = useState('blue');
 
-### `npm run build`
+    return (
+        <div>
+            <button onClick={onClickEnter}>입장</button>
+            <button onClick={onClickLeave}>퇴장</button>
+            <h1 style={{color}}>{message}</h1>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+            <button style={{ color:' pink '}} onClick={() => setColor('pink')}>분</button>
+            <button style={{ color:' green'}} onClick={() => setColor('green')}>초</button>
+            <button style={{ color:' yellow'}} onClick={() => setColor('yellow')}>노</button>
+        </div>
+    )
+};
+```
+배열이나 객체 업뎃을 할 때에는 사본을 만들고 사본에 값을 업데이트 후 복사해야함.   
