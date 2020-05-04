@@ -10,6 +10,7 @@ const Two = () => <h1>Two</h1>;
 function App() {
   return (
     <div className="App">
+      <h2>project name</h2>
       <BrowserRouter>
           <Navigation />
           <Route path="/" exact component={Home} />

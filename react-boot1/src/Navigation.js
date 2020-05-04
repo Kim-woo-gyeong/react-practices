@@ -8,11 +8,11 @@ class Navigation extends Component {
         const { location } = this.props;
         console.log(this.props);
     return (
-      <Navbar bg="light" variant="light">
+      <Navbar className="navsbar" bg="light" variant="light">
         <Nav activeKey={location.pathname}>
-          <Nav.Link href="/">속성</Nav.Link>
-          <Nav.Link href="/comment">코멘트</Nav.Link>
-          <Nav.Link href="/file">파일 & 링크</Nav.Link>
+          <Nav.Link className="navlink" href="/">속성</Nav.Link>
+          <Nav.Link className="navlink" href="/comment">코멘트</Nav.Link>
+          <Nav.Link className="navlink" href="/file">파일 & 링크</Nav.Link>
         </Nav>
       </Navbar>
         );
