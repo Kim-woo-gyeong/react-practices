@@ -1,7 +1,11 @@
 @import './style/utils.scss';
 
 .SassComponent {
+    background: $oc-gray-2;
     display: flex;
+    @include media('<768px'){
+        background:$oc-gray-9;
+    }
     .box {
         background: red;
         cursor: pointer;
