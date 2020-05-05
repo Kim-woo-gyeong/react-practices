@@ -1,9 +1,24 @@
-import React from 'react';
-import IterationSample from './IterationSample'
+import React, {useState} from 'react';
+// import IterationSample from './IterationSample'
+import Counter from './Counter';
+import Info from './Info';
+import Average from './Average';
 const App = () => {
+    // const[visible, setVisible] = useState(false);
     return (
         <div>
-            <IterationSample />
+            {/* <button
+                onClick={() =>{
+                    setVisible(!visible);
+                }}>
+                {visible ? '숨기기' : '보이기'}
+            </button>
+            <hr/>
+                {visible && <Info />} */}
+            {/* <IterationSample /> */}
+            {/* <Counter /> */}
+            <Info />
+            <Average />
         </div>
     );
 }
